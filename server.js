@@ -1,4 +1,6 @@
 const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
+const schema = require("./app/graphql/Schema");
 const routes = require("./app/routes/Recipe");
 const mongoose = require("mongoose");
 const db = require("./app/config/keys").mongoURI;
@@ -15,6 +17,14 @@ mongoose
 	});
 
 var port = process.env.PORT || 4000;
+
+app.use(
+	"/graphql",
+	graphqlHTTP({
+		schema,
+		graphiql: true,
+	})
+);
 
 app.use("/api/recipe", routes);
 
