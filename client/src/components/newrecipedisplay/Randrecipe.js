@@ -11,6 +11,7 @@ const RECIPE_QUERY = gql`
 			title
 			readyInMinutes
 			image
+			summary
 			sourceUrl
 			spoonacularSourceUrl
 			instructions
@@ -34,8 +35,8 @@ export class randrecipe extends Component {
 							<>
 								{data.recipes.map((recipe) => (
 									<RecipeDisplay
+										summary={recipe.summary}
 										title={recipe.title}
-										instructions={recipe.instructions}
 										image={recipe.image}
 									/>
 								))}
