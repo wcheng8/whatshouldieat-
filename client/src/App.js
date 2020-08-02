@@ -1,26 +1,36 @@
 // Libraries
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import Randomrecipe from "./components/newrecipedisplay/Randrecipe";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import Randomrecipe from "./components/newrecipedisplay/Randrecipe";
+import RecipePage from "./components/newrecipedisplay/RecipePage";
 const client = new ApolloClient({
 	uri: "http://localhost:4000/graphql",
 });
 function App() {
+	const [randRecipe, setrandRecipe] = useState({});
+	const getrrecipe = (e) => {
+		setrandRecipe(e);
+	};
 	return (
 		<ApolloProvider client={client}>
-			<div>
+			<Router>
 				<Navbar />
-				<div className="container pt-4 pb-4">
-					<Randomrecipe />
-				</div>
+				<Switch>
+					<div className="container pt-4 pb-4">
+						<Route exact path="/random">
+							<Randomrecipe getrrecipe={getrrecipe} />
+						</Route>
+						<Route exact path="/random/:id" component={RecipePage} />
+					</div>
+				</Switch>
 				<Footer />
-			</div>
+			</Router>
 		</ApolloProvider>
 	);
 }

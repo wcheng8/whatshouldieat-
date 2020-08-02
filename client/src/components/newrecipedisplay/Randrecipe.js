@@ -14,6 +14,7 @@ const RECIPE_QUERY = gql`
 			summary
 			sourceUrl
 			spoonacularSourceUrl
+			spoonacularScore
 			instructions
 			extendedIngredients {
 				id
@@ -26,13 +27,14 @@ export class randrecipe extends Component {
 	render() {
 		return (
 			<div>
-				<h1 className="display-4 my-3">Recipes</h1>
+				<h1 className="display-4 my-3 text-center">Recipes</h1>
 				<Query query={RECIPE_QUERY}>
 					{({ loading, error, data }) => {
 						if (loading) return <h4>Loading...</h4>;
 						if (error) console.log(error);
 						return (
 							<>
+								{this.props.getrrecipe(data.recipes)}
 								{data.recipes.map((recipe) => (
 									<RecipeDisplay
 										summary={recipe.summary}

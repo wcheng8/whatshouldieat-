@@ -12,7 +12,7 @@ import Truncate from "react-truncate";
 
 const useStyles = makeStyles({
 	root: {
-		maxWidth: 345,
+		maxWidth: "80%",
 	},
 });
 
@@ -20,8 +20,8 @@ const RecipeDisplay = ({ title, summary, image }) => {
 	const classes = useStyles();
 
 	return (
-		<>
-			<Card className={classes.root}>
+		<div className="d-flex justify-content-center">
+			<Card className={`${classes.root}`}>
 				<CardActionArea>
 					<CardMedia
 						component="img"
@@ -31,20 +31,16 @@ const RecipeDisplay = ({ title, summary, image }) => {
 						title={title}
 					/>
 					<CardContent>
-						<Typography gutterBottom variant="h5" component="h2">
+						<Typography
+							gutterBottom
+							variant="h5"
+							component="h2"
+							className="text-center"
+						>
 							{title}
 						</Typography>
 						<Typography variant="body2" color="textSecondary" component="p">
-							<Truncate
-								lines={3}
-								ellipsis={
-									<span>
-										... <a href="/link/to/article">Read more</a>
-									</span>
-								}
-							>
-								{renderHTML(summary)}
-							</Truncate>
+							<Truncate lines={4}>{renderHTML(summary)}</Truncate>
 						</Typography>
 					</CardContent>
 				</CardActionArea>
@@ -54,7 +50,7 @@ const RecipeDisplay = ({ title, summary, image }) => {
 					</Button>
 				</CardActions>
 			</Card>
-		</>
+		</div>
 	);
 };
 

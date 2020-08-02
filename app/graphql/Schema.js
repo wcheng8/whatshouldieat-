@@ -26,6 +26,8 @@ const RecipeType = new GraphQLObjectType({
 		spoonacularSourceUrl: { type: GraphQLString },
 		instructions: { type: GraphQLString },
 		summary: { type: GraphQLString },
+		spoonacularScore: { type: GraphQLInt },
+		cuisines: { type: new GraphQLList(GraphQLString) },
 		extendedIngredients: { type: new GraphQLList(IngredientType) },
 	}),
 });
