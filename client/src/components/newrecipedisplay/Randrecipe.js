@@ -34,7 +34,7 @@ export class randrecipe extends Component {
 						if (error) console.log(error);
 						return (
 							<>
-								{this.props.getrrecipe(data.recipes)}
+								{this.props.getRandomRecipe(data.recipes[0])}
 								{data.recipes.map((recipe) => (
 									<RecipeDisplay
 										summary={recipe.summary}

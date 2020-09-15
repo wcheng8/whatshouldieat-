@@ -13,9 +13,10 @@ const client = new ApolloClient({
 	uri: "http://localhost:4000/graphql",
 });
 function App() {
-	const [randRecipe, setrandRecipe] = useState({});
-	const getrrecipe = (e) => {
-		setrandRecipe(e);
+	const [randomRecipe, setRandomRecipe] = useState({});
+	const getRandomRecipe = (e) => {
+		setRandomRecipe(e);
+		window.localStorage.setItem("randomRecipe", JSON.stringify(e));
 	};
 	return (
 		<ApolloProvider client={client}>
@@ -24,9 +25,11 @@ function App() {
 				<Switch>
 					<div className="container pt-4 pb-4">
 						<Route exact path="/random">
-							<Randomrecipe getrrecipe={getrrecipe} />
+							<Randomrecipe getRandomRecipe={getRandomRecipe} />
 						</Route>
-						<Route exact path="/random/:id" component={RecipePage} />
+						<Route exact path="/random/fullrecipe">
+							<RecipePage />
+						</Route>
 					</div>
 				</Switch>
 				<Footer />
