@@ -6,7 +6,7 @@ function RecipePage() {
 		const random = window.localStorage.getItem("randomRecipe");
 		console.log("setting random recipe");
 		setRandomRecipe(JSON.parse(random));
-	});
+	}, []);
 	return (
 		<>
 			<div className="row">
