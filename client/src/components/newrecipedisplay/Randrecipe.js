@@ -11,6 +11,7 @@ const RECIPE_QUERY = gql`
 			title
 			readyInMinutes
 			image
+			cuisines
 			summary
 			sourceUrl
 			spoonacularSourceUrl
