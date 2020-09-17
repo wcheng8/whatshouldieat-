@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import RecipeAdd from "./components/newrecipedisplay/RecipeAdd";
 import Randomrecipe from "./components/newrecipedisplay/Randrecipe";
 import RecipePage from "./components/newrecipedisplay/RecipePage";
 const client = new ApolloClient({
@@ -27,8 +28,11 @@ function App() {
 						<Route exact path="/random">
 							<Randomrecipe getRandomRecipe={getRandomRecipe} />
 						</Route>
-						<Route exact path="/random/fullrecipe">
+						<Route exact path="/random/full">
 							<RecipePage />
+						</Route>
+						<Route exact path="/add">
+							<RecipeAdd />
 						</Route>
 					</div>
 				</Switch>

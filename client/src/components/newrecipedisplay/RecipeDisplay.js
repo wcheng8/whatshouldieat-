@@ -45,7 +45,7 @@ const RecipeDisplay = ({ title, summary, image }) => {
 					</CardContent>
 				</CardActionArea>
 				<CardActions>
-					<Link to="/random/fullrecipe" className="btn btn-primary">
+					<Link to="/random/full" className="btn btn-primary">
 						See More ...
 					</Link>
 				</CardActions>
